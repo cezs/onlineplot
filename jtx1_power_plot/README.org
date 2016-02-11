@@ -1,0 +1,5 @@
+* Usage
+
+#+begin_example
+$ ./plot.sh
+#+end_example
