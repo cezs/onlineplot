@@ -1,0 +1,41 @@
+#+title: onlineplot
+
+Use /gnuplot/ to plot data from continuously updated file
+
+[[./media/onlineplot.png]]
+
+* Running
+
+** Example of printing data to file
+
+Change permissions
+#+begin_example
+chmod +x ./cpuscan.sh
+#+end_example
+
+Run
+#+begin_example
+./cpuscan.sh
+#+end_example
+
+** Use constantly updated file for plotting
+
+Change permissions
+#+begin_example
+chmod +x ./onlineplot.sh
+#+end_example
+
+Print all data
+#+begin_example
+./onlineplot.sh -f "cpumhz.log"
+#+end_example
+
+Print only last n samples
+#+begin_example
+./onlineplot.sh -f "cpumhz.log" -n 30
+#+end_example
+
+Change start and end column
+#+begin_example
+./onlineplot.sh -f "cpumhz.log" -n 30 -s 0 -e 1
+#+end_example
