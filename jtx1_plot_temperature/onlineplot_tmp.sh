@@ -70,6 +70,8 @@ if [ -z $numofsamples ]; then
 else
     # option 2: show only last n samples
     echo "set autoscale xy" >> $script
+
+#     # Non-portable version
 #     arraylen=${#sensor[@]}
 #     pt2=$(echo "plot \"< tail -n $numofsamples $datafile\" \
 # u 0:1 with steps title '${sensor[1]}', ")
@@ -80,6 +82,8 @@ else
 #         pt2=$pt2$pt1
 #     done
 #     echo "${pt2::-2}" >> $script
+
+    # Portable version
     echo "plot \"< tail -n $numofsamples $datafile\" \
 u 0:1 with steps title '${sensor[0]}', \
 \"< tail -n $numofsamples $datafile\" \
@@ -103,16 +107,3 @@ gnuplot $script
 read
 
 exit
-
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:2 with steps title '${sensor[2]}', \
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:3 with steps title '${sensor[3]}', \
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:4 with steps title '${sensor[4]}', \
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:5 with steps title '${sensor[5]}', \
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:6 with steps title '${sensor[6]}', \
-# \"< tail -n $numofsamples $datafile\" \
-# u 0:7 with steps title '${sensor[7]}', \
