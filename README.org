@@ -1,5 +1,45 @@
+#+title: onlineplot
+
+Use /gnuplot/ to plot data from continuously updated file
+
+[[./media/sc1.png]]
+
 * Usage
 
+** Printing data to a file
+
+Change permissions of script.
 #+begin_example
-$ ./plot.sh
+chmod +x ./scan_cpu.sh
 #+end_example
+
+Run the script which continuously writes data to a file.  
+#+begin_example
+./scan_cpu.sh
+#+end_example
+
+** Using the continuously updated file for plotting
+
+Change permissions of the script.
+#+begin_example
+chmod +x ./onlineplot_cpu.sh
+#+end_example
+
+Print all the data contained in the file.
+#+begin_example
+./onlineplot_cpu -f "cpumhz.log"
+#+end_example
+
+Print only the last n samples.
+#+begin_example
+./onlineplot_cpu -f "cpumhz.log" -n 30
+#+end_example
+
+Change the start and the end column.
+#+begin_example
+./onlineplot_cpu -f "cpumhz.log" -n 30 -s 0 -e 1
+#+end_example
+
+* License
+
+This is free and unencumbered software released into the public domain. For more information, please refer to the [[./LICENSE][LICENSE]] file.

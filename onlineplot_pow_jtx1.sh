@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a sensor=("TOTAL" "GPU" "CPU")
+declare -a sensor=("SoC" "GPU" "CPU")
 
 # temporary file holding gnuplot script
 script=tmp.plt

@@ -8,7 +8,6 @@ log_pow=pow.log
 function cleanup {
     sudo pkill -f read_from_40.py
     sudo pkill -f online_pow.sh
-#    rm -f $log_pow
 }
 
 # remove previously generated log
@@ -18,12 +17,8 @@ else
     touch $log_pow
 fi
 
-
-# # kill all children processes on exit
-# trap 'kill 0' EXIT
-
 trap cleanup EXIT
 
-sudo python ./read_from_40.py &
+sudo python ./scan_pow_jtx1.py &
 sleep 5
-./onlineplot_pow.sh -f "pow.log" -n 30
+./onlineplot_pow_jtx1.sh -f "pow.log" -n 30

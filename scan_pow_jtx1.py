@@ -4,10 +4,8 @@ from smbus2 import *
 import time
 import struct
 
-# INA3221 address
 addr = 0x40
 
-# milli-ohms
 rshunt = [20, 10, 10]
 
 vshuntReg = [0x01, 0x03, 0x05]
@@ -51,14 +49,11 @@ with SMBusWrapper(1) as bus:
             for i in range(3):
                 power.append(calcPow(vbus[i], curr[i]))
 
-            # print("Shunt voltages (mV): {}".format(vshunt))
-            # print("Bus voltages (mV): {}".format(vbus))
-
-            # print("Current (mA): {}".format(curr))
-            # print("Power (mW): {}".format(power))
-        
             time.sleep(1)
 
+            # print("{},{},{}\n".format(power[0],power[1],power[2]))
+
             f.write("{},{},{}\n".format(power[0],power[1],power[2]))
-            print("{},{},{}\n".format(power[0],power[1],power[2]))
             f.flush()
+
+
